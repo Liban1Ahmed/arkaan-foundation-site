@@ -113,13 +113,13 @@ export function Events() {
     <section id="events">
       {/* FULL SCREEN POSTER GALLERY - TOP SECTION */}
       {allPosters.length > 0 ? (
-        <div className="relative w-full h-screen bg-black">
+        <div className="relative w-full h-screen">
           {/* Full Screen Poster Image */}
           <div className="absolute inset-0">
             <img
               src={allPosters[currentPosterIndex].poster}
               alt={allPosters[currentPosterIndex].title}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
             />
           </div>
 
