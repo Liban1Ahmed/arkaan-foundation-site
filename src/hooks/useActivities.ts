@@ -48,13 +48,18 @@ export function useActivities() {
 
   // ADD
   async function addActivity(activity: Omit<Activity, "id" | "createdAt">) {
-    await supabase.from("activities").insert([
-      {
-        ...activity,
-        createdAt: new Date().toISOString(),
-      },
-    ]);
-  }
+  console.log("ADDING ACTIVITY", activity);
+
+  const { data, error } = await supabase.from("activities").insert([
+    {
+      ...activity,
+      createdAt: new Date().toISOString(),
+    },
+  ]);
+
+  console.log("INSERT RESULT", data, error);
+}
+
 
   // UPDATE
   async function updateActivity(id: string, updates: Partial<Activity>) {
