@@ -50,14 +50,25 @@ export function useActivities() {
   async function addActivity(activity: Omit<Activity, "id" | "createdAt">) {
   console.log("ADDING ACTIVITY", activity);
 
-  const { data, error } = await supabase.from("activities").insert([
-    {
-      ...activity,
-      createdAt: new Date().toISOString(),
-    },
-  ]);
+  const payload = {
+    title: activity.title,
+    description: activity.description,
+    schedule: activity.schedule ?? "",
+    time: activity.time ?? "",
+    location: activity.location ?? "",
+    category: activity.category ?? "Weekly",
+    poster: activity.poster ?? null,
+    featured: !!activity.featured,
+  };
+
+  const { data, error } = await supabase
+    .from("activities")
+    .insert(payload)
+    .select();
 
   console.log("INSERT RESULT", data, error);
+
+  if (error) throw error;
 }
 
 
