@@ -113,7 +113,7 @@ export function Events() {
     <section id="events">
       {/* FULL SCREEN POSTER GALLERY - TOP SECTION */}
       {allPosters.length > 0 ? (
-        <div className="w-full py-20 flex justify-center items-center bg-background">
+        <div className="relative w-full h-screen bg-black">
           {/* Full Screen Poster Image */}
           <div className="absolute inset-0">
             <img
