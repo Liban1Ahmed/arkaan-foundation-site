@@ -59,3 +59,62 @@ export function AdminLogin() {
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
           <Lock className="h-4 w-4 mr-2" />
+          Admin Login
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5 text-primary" />
+            Admin Login
+          </DialogTitle>
+          <DialogDescription>
+            Sign in to manage activities and posters.
+          </DialogDescription>
+        </DialogHeader>
+
+        <form onSubmit={handleLogin} className="space-y-4 mt-4">
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <div className="relative">
+              <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                id="email"
+                type="email"
+                placeholder="Enter email"
+                value={credentials.email}
+                onChange={(e) =>
+                  setCredentials((prev) => ({ ...prev, email: e.target.value }))
+                }
+                className="pl-10"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="password">Password</Label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                id="password"
+                type="password"
+                placeholder="Enter password"
+                value={credentials.password}
+                onChange={(e) =>
+                  setCredentials((prev) => ({ ...prev, password: e.target.value }))
+                }
+                className="pl-10"
+                required
+              />
+            </div>
+          </div>
+
+          <Button type="submit" className="w-full">
+            Sign In
+          </Button>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+}
